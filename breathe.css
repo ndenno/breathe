@@ -14,12 +14,16 @@
     
  }
 
+ #presets{
+    //display:blovk;
+ }
+
  #count{
     margin-bottom:50px;
  }
 
  #breathaction:hover{
-    transform:scale(104%);
+    /* transform:scale(104%); */
  }
 
  #breathaction{
@@ -66,6 +70,7 @@
 .action{
     transition: all 0.3s;
     transition-timing-function:ease-in;
+    /* color:rgb(235, 234, 234); */
 }
 
 #stop{
@@ -73,3 +78,11 @@
     display:none;
 }
 
+.customslider{
+    accent-color: gray;
+}
+
+#customization{
+    color:rgb(235, 234, 234);
+    /* transform:scale(99%) */
+}
