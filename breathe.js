@@ -310,12 +310,12 @@ stopBtn.addEventListener('click', function(){
 
 toggleBtn.addEventListener('click', function(){
     if (isCustomizationVisible){
-        customSection.classList.replace('collapse.show', 'collapse');
+        //customSection.classList.replace('collapse.show', 'collapse');
         isCustomizationVisible = false;
         presetMenu.value = 'boxFour'
     }
     else{
-        customSection.classList.replace('collapse', 'collapse.show');
+        //customSection.classList.replace('collapse', 'collapse.show');
         isCustomizationVisible = true;
         setCustomSliderColor();
         presetMenu.value = "none";
@@ -325,10 +325,12 @@ toggleBtn.addEventListener('click', function(){
 presetMenu.addEventListener('input', function(){
     if (this.value != 'none'){
         //console.log('selected');
+        customSection.classList.replace('collapse.show', 'collapse');
         setCustomSliderColor('gray');
     }
     else{
         //console.log('not selected');
+        customSection.classList.replace('collapse', 'collapse.show');
         setCustomSliderColor();
     }
 
