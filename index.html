@@ -34,12 +34,12 @@
 
                     <!-- <p  id="presets" class="text-info pt-2">I'll make my own</p> -->
                     <div>
-                        <button id="presets" class="btn btn-info" type="button" data-toggle="collapse" data-target="#customization" aria-expanded="false" aria-controls="customization">
-                            I'll make my own
+                        <button id="toggle" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#customization" aria-expanded="false" aria-controls="customization">
+                            Let me customize
                         </button>
                     </div>
                 </div>
-                <section id="customization" class="" >
+                <div id="customization" class="collapse" >
                     <div class="pb-2">
                         <!-- <label for="select">Choose an action</label> -->
                         <select name="select" id="action1" class="action">
@@ -85,7 +85,7 @@
                         <input class="customslider" type="range" id="act4duration" name="act4duration" max="15" min="2" value="4">
                         <output class="act4text"></output>
                     </div>
-                </section>
+                </div>
 
                 <div class="py-3">
                     <label for="numcycles">Number of cycles:</label>

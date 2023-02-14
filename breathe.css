@@ -87,4 +87,14 @@
 #customization{
     color:rgb(235, 234, 234);
     /* transform:scale(99%) */
+    transition: all 1s;
+}
+
+.collapsing{
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition-duration: 0.35s;
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
 }

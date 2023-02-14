@@ -15,6 +15,8 @@ const count = document.querySelector('#count');
 
 const breatheBtn = document.querySelector('#breathebutton');
 const stopBtn = document.querySelector('#stop');
+const toggleBtn = document.querySelector('#toggle');
+
 const presetMenu = document.querySelector("#presets");
 
 const customSettings = document.querySelectorAll(".customslider");
@@ -47,6 +49,7 @@ const formActions = document.querySelector('#actions');
 //Set some initial values
 let actionCount = 0;
 let cycleCount = 0;
+let isCustomizationVisible = false;
 act1Text.innerHTML = action1Length.value;
 act2Text.innerHTML = action2Length.value;
 act3Text.innerHTML = action3Length.value;
@@ -305,13 +308,27 @@ stopBtn.addEventListener('click', function(){
     resetScreen();
 });
 
+toggleBtn.addEventListener('click', function(){
+    if (isCustomizationVisible){
+        customSection.classList.replace('collapse.show', 'collapse');
+        isCustomizationVisible = false;
+        presetMenu.value = 'boxFour'
+    }
+    else{
+        customSection.classList.replace('collapse', 'collapse.show');
+        isCustomizationVisible = true;
+        setCustomSliderColor();
+        presetMenu.value = "none";
+    }
+})
+
 presetMenu.addEventListener('input', function(){
     if (this.value != 'none'){
-        console.log('selected');
+        //console.log('selected');
         setCustomSliderColor('gray');
     }
     else{
-        console.log('not selected');
+        //console.log('not selected');
         setCustomSliderColor();
     }
 
