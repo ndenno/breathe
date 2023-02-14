@@ -1,12 +1,6 @@
  .body{
      /* background-color:rgb(63, 94, 94) */
  }
-
- #headings{
-    //background-color:red;
-    //border-radius:50px;
-    
- }
  
  #container{
     margin-left:auto;
@@ -23,13 +17,8 @@
     font-family: 'Times New Roman', serif;
  }
 
- #breathaction:hover{
-    /* transform:scale(104%); */
- }
-
  #breathaction{
     transition: all 0.3s;
-    /* font-family: 'Philosopher', serif; */
     font-family: 'Playfair Display', serif;
 }
  
@@ -83,13 +72,17 @@
 
 .customslider{
     accent-color: gray;
+    width:100px;
 }
 
 #customization{
     color:rgb(235, 234, 234);
     transition: all 1s;
-    transition-timing-function:ease-in;
+    transition-timing-function:step-end;
     
 }
 
+#numcycles{
+    width: 100px;
+}
 

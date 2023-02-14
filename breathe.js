@@ -7,7 +7,9 @@
 //            VARS           //
 ///////////////////////////////
 
-const breathActionText = '/breathe/'
+const breathActionText = '/breathe/';
+//const sessionBGColor  = 'rgb(63, 94, 94)';        //ORIGINAL COLOR
+const sessionBGColor  = 'rgb(30, 30, 40)';
 
 const container = document.querySelector('#container');
 const breathAction = document.querySelector('#breathaction');
@@ -62,14 +64,8 @@ numCyclesInt.innerHTML = numCycles.value;
 count.style.transition = "all 2s"
 breathAction.style.transition = "all 2s"
 document.body.style.transition = "all 3s"
-//formActions.style.transition = "all 1s"
 stopBtn.style.transition = "all 1s"
-customSection.style.transition = 'all 0.1s'
-
-
-
-//testing something here
-
+customSection.style.transition = 'all 0.3s';
 
 
 //////////////////////////////
@@ -78,7 +74,7 @@ customSection.style.transition = 'all 0.1s'
 
 //The main function of the program
 function breathe(list, numCycles=1){
-    document.body.style.backgroundColor = 'rgb(63, 94, 94)'
+    document.body.style.backgroundColor = sessionBGColor;
     count.innerText = ""
     count.classList.replace('display-4', 'display-1');
     count.classList.remove('text-warning');
@@ -310,12 +306,10 @@ stopBtn.addEventListener('click', function(){
 
 toggleBtn.addEventListener('click', function(){
     if (isCustomizationVisible){
-        //customSection.classList.replace('collapse.show', 'collapse');
         isCustomizationVisible = false;
         presetMenu.value = 'boxFour'
     }
     else{
-        //customSection.classList.replace('collapse', 'collapse.show');
         isCustomizationVisible = true;
         setCustomSliderColor();
         presetMenu.value = "none";
@@ -324,12 +318,10 @@ toggleBtn.addEventListener('click', function(){
 
 presetMenu.addEventListener('input', function(){
     if (this.value != 'none'){
-        //console.log('selected');
         customSection.classList.replace('collapse.show', 'collapse');
         setCustomSliderColor('gray');
     }
     else{
-        //console.log('not selected');
         customSection.classList.replace('collapse', 'collapse.show');
         setCustomSliderColor();
     }
