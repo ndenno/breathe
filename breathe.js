@@ -10,6 +10,9 @@
 const breathActionText = '/breathe/';
 //const sessionBGColor  = 'rgb(63, 94, 94)';        //ORIGINAL COLOR
 const sessionBGColor  = 'rgb(30, 30, 40)';
+const inhale = 'inhale';
+const exhale = 'exhale';
+const hold = 'hold';
 
 const container = document.querySelector('#container');
 const breathAction = document.querySelector('#breathaction');
@@ -334,23 +337,23 @@ presetMenu.addEventListener('input', function(){
 //       PRESET EXERCISES     //
 ///////////////////////////////
 
-const boxFour = [new breathingAction('Inhale',4),
-                new breathingAction('Hold',4),
-                new breathingAction('Exhale',4),
-                new breathingAction('Hold',4)];
+const boxFour = [new breathingAction(inhale,4),
+                new breathingAction(hold,4),
+                new breathingAction(exhale,4),
+                new breathingAction(hold,4)];
 
-const boxSix = [new breathingAction('Inhale',6),
-                new breathingAction('Hold',6),
-                new breathingAction('Exhale',6),
-                new breathingAction('Hold',6)];
+const boxSix = [new breathingAction(inhale,6),
+                new breathingAction(hold,6),
+                new breathingAction(exhale,6),
+                new breathingAction(hold,6)];
 
-const fourSevenEight = [new breathingAction('Inhale',4),
-                new breathingAction('Hold',7),
-                new breathingAction('Exhale',8)];
+const fourSevenEight = [new breathingAction(inhale,4),
+                new breathingAction(hold,7),
+                new breathingAction(exhale,8)];
 
-const fourTwoEight = [new breathingAction('Inhale',4),
-                new breathingAction('Hold',2),
-                new breathingAction('Exhale',8)];
+const fourTwoEight = [new breathingAction(inhale,4),
+                new breathingAction(hold,2),
+                new breathingAction(exhale,8)];
 
-const resonantFive = [new breathingAction('Inhale',5),
-                new breathingAction('Exhale',5)];
+const resonantFive = [new breathingAction(inhale,5),
+                new breathingAction(exhale,5)];
