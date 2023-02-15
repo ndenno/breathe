@@ -1,5 +1,5 @@
  .body{
-     /* background-color:rgb(63, 94, 94) */
+
  }
  
  #container{
@@ -12,14 +12,20 @@
     //display:block;
  }
 
+ #headings{
+    font-size:4rem;
+ }
+
  #count{
-    margin-bottom:50px;
+    margin-top:50px;
     font-family: 'Times New Roman', serif;
  }
 
  #breathaction{
     transition: all 0.3s;
     font-family: 'Playfair Display', serif;
+    margin-top:25px;
+    transform:scale(120%);
 }
  
  
@@ -83,6 +89,6 @@
 }
 
 #numcycles{
-    width: 100px;
+    width: 125px;
 }
 

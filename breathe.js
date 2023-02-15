@@ -79,12 +79,10 @@ customSection.style.transition = 'all 0.3s';
 function breathe(list, numCycles=1){
     document.body.style.backgroundColor = sessionBGColor;
     count.innerText = ""
-    count.classList.replace('display-4', 'display-1');
-    count.classList.remove('text-warning');
     count.style.color= 'white'
-    count.style.transform = "translateY(200px) scale(105%)"
-    breathAction.style.transform = "translateY(200px)"
-    breathAction.classList.replace('display-3', 'display-4');
+    count.style.transform = "translateY(200px) scale(200%)"
+    breathAction.style.transform = "translateY(200px) scale(110%)"
+    breathAction.classList.replace('display-1', 'display-2');
     breathAction.classList.replace('text-primary', 'text-warning')
     formActions.style.display = 'none'
     actionCount = 0;
@@ -187,13 +185,12 @@ function resetScreen(intervalId='intervalId'){
     breathAction.innerText = breathActionText;
     clearInterval(intervalId);
     document.body.style.backgroundColor = 'rgb(250,250,250)'
-    count.classList.replace('display-1', 'display-4');
     count.style.color= 'black'
     count.innerText='';
     breathAction.classList.replace('text-warning', 'text-primary')
-    breathAction.classList.replace('display-4', 'display-3')
+    breathAction.classList.replace('display-2', 'display-1')
     count.style.transform = "translateY(0px)"
-    breathAction.style.transform = "translateY(0px)"
+    breathAction.style.transform = "translateY(0px) scale(120%)"
     stopBtn.style.display="none"
     setTimeout(function(){formActions.style.display = 'block'},2000);
     breatheBtn.disabled = false;
