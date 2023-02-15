@@ -80,8 +80,8 @@ function breathe(list, numCycles=1){
     document.body.style.backgroundColor = sessionBGColor;
     count.innerText = ""
     count.style.color= 'white'
-    count.style.transform = "translateY(200px) scale(200%)"
-    breathAction.style.transform = "translateY(200px) scale(110%)"
+    count.style.transform = "translateY(200px)" // scale(200%) will push the stop button down!
+    breathAction.style.transform = "translateY(200px) scale(110%) "
     breathAction.classList.replace('display-1', 'display-2');
     breathAction.classList.replace('text-primary', 'text-warning')
     formActions.style.display = 'none'
