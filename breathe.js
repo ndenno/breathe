@@ -283,10 +283,9 @@ function preventScreenSleep(){
 
     };
 
-// draws a rectangle 1/10 of the size of the canvas, filled with a random color from the colors list.
 function draw (){
     ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-    ctx.fillRect(0, 0, canvas.width/10, canvas.height/10);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 
