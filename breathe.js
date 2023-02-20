@@ -8,7 +8,6 @@
 ///////////////////////////////
 
 const breathActionText = '/breathe/';
-//const sessionBGColor  = 'rgb(63, 94, 94)';        //ORIGINAL COLOR
 const mainMenuBGColor = 'white'
 const sessionBGColor  = 'rgb(30, 30, 40)';
 const inhale = 'inhale';
@@ -50,9 +49,13 @@ const numCyclesInt = document.querySelector("output.numcyclestext");
 
 const formActions = document.querySelector('#actions');
 
-
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext('2d');
+ const colors = [sessionBGColor, "rgb(29,29,39)", 'rgb(31,31,41)'];
+// const colors = [sessionBGColor, "black", 'red', 'white', 'blue', 'purple', 'orange', 'magenta']; //for testing
 
 //Set some initial values
+
 let actionCount = 0;
 let cycleCount = 0;
 let isCustomizationVisible = false;
@@ -94,7 +97,7 @@ function breathe(list, numCycles=1){
         stopBtn.style.display = 'block';
         stopBtn.style.position = "fixed";   // keep it fixed at the bottom of the screen
         stopBtn.style.bottom = "10px" 
-             
+        preventScreenSleep();     
         //the main counting loop
         const intervalId = setInterval(function(){
             if (actionCount >= list.length){
@@ -185,6 +188,7 @@ function putIntoList(action, list, startIndex){
 function resetScreen(intervalId='intervalId'){
     actionCount = 1000; //triggers the breathe() function to stop the count
     cycleCount = 1000;
+    deleteVideos();
     breathAction.innerText = breathActionText;
     clearInterval(intervalId);
     document.body.style.backgroundColor = mainMenuBGColor;
@@ -197,6 +201,20 @@ function resetScreen(intervalId='intervalId'){
     stopBtn.style.display="none"
     setTimeout(function(){formActions.style.display = 'block'},2000);
     breatheBtn.disabled = false;
+}
+
+//deletes all video elements in the window
+function deleteVideos(){
+    while (true){
+        if (document.querySelector('video')){ //delete the video element if it exists
+            vid = document.querySelector('video')
+            vid.remove();
+            console.log('deleted video');
+        }
+        else{
+            return;
+        }
+    }
 }
 
 //displays a list of all the actions in the actionList
@@ -225,19 +243,52 @@ function setCustomSliderColor(color='rgb(2, 117, 216)'){
     }
 }
 
-
+//prevent the screen from sleeping by playing a small video with minor color changes
 function preventScreenSleep(){
-    requestAnimationFrame(function(){
-        let div = document.createElement('div');
-        let element = document.body.appendChild(div);
-        //console.log('created element');
-        document.body.removeChild(element);
-        //console.log('deleted element');
-        //console.log('ran requestAnimationFrame to prevent screen sleep');
-    });
+        let video = document.createElement('video');
+        video.controls = false;
+        video.autoplay = true;
+        video.muted = true;
+        video.height = canvas.height;
+        video.width = canvas.width;
+        container.appendChild(video);
+        draw();
+        const stream = canvas.captureStream(24);
+        let mediaRecorder = new MediaRecorder(stream);
+        let chunks = [];
+
+        mediaRecorder.ondataavailable = function(e) {
+            chunks.push(e.data);
+        };
+        mediaRecorder.onstop = function(e) {
+            let blob = new Blob(chunks, { 'type' : 'video/mp4' });
+            chunks = [];
+            let url = URL.createObjectURL(blob);
+            video.src = url;
+        };
+        canvas.style.display = 'none'; //hide the canvas
+
+        mediaRecorder.ondataavailable = function(e) {
+            chunks.push(e.data);
+        };
+        mediaRecorder.start();
+        const id = setInterval(draw, 1000);
+        setTimeout(function (){     //record 10 seconds of video
+            mediaRecorder.stop(); 
+            }, 10000); //clearInterval(id)
+
+        setTimeout(function(){      //delete the video element after it finishes playing
+                video.remove();
+            }, 20000);    
+
+    };
+
+function draw (){
+    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-    
+
 ////////////////////////////////
 //       EVENT LISTENERS      //
 ///////////////////////////////
