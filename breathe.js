@@ -15,6 +15,7 @@ const exhale = 'exhale';
 const hold = 'hold';
 
 const container = document.querySelector('#container');
+const videoContainer = document.querySelector('#video');
 const breathAction = document.querySelector('#breathaction');
 const count = document.querySelector('#count');
 
@@ -51,7 +52,7 @@ const formActions = document.querySelector('#actions');
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext('2d');
- const colors = [sessionBGColor, "rgb(29,29,39)", 'rgb(31,31,41)'];
+const colors = [sessionBGColor, "rgb(29,29,39)", 'rgb(31,31,41)'];
 // const colors = [sessionBGColor, "black", 'red', 'white', 'blue', 'purple', 'orange', 'magenta']; //for testing
 
 //Set some initial values
@@ -251,7 +252,7 @@ function preventScreenSleep(){
         video.muted = true;
         video.height = canvas.height;
         video.width = canvas.width;
-        container.appendChild(video);
+        videoContainer.appendChild(video);
         draw();
         const stream = canvas.captureStream(24);
         let mediaRecorder = new MediaRecorder(stream);

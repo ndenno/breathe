@@ -92,3 +92,11 @@
     width: 10rem;
 }
 
+#video{
+    
+    display:block;
+    position:fixed;
+    bottom: 30px;
+    left:50%;
+}
+
