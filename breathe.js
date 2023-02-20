@@ -9,6 +9,7 @@
 
 const breathActionText = '/breathe/';
 //const sessionBGColor  = 'rgb(63, 94, 94)';        //ORIGINAL COLOR
+const mainMenuBGColor = 'white'
 const sessionBGColor  = 'rgb(30, 30, 40)';
 const inhale = 'inhale';
 const exhale = 'exhale';
@@ -97,6 +98,8 @@ function breathe(list, numCycles=1){
         //the main counting loop
         const intervalId = setInterval(function(){
             if (actionCount >= list.length){
+                if (cycleCount < 51)
+                    preventScreenSleep();
                 cycleCount++;
                 if (cycleCount >= numCycles){
                     resetScreen(intervalId);
@@ -184,7 +187,7 @@ function resetScreen(intervalId='intervalId'){
     cycleCount = 1000;
     breathAction.innerText = breathActionText;
     clearInterval(intervalId);
-    document.body.style.backgroundColor = 'rgb(250,250,250)'
+    document.body.style.backgroundColor = mainMenuBGColor;
     count.style.color= 'black'
     count.innerText='';
     breathAction.classList.replace('text-warning', 'text-primary')
@@ -221,15 +224,19 @@ function setCustomSliderColor(color='rgb(2, 117, 216)'){
         
     }
 }
-//gets the information about a list? of breath actions
-function getActionInfo(list){
 
+
+function preventScreenSleep(){
+    requestAnimationFrame(function(){
+        let div = document.createElement('div');
+        let element = document.body.appendChild(div);
+        //console.log('created element');
+        document.body.removeChild(element);
+        //console.log('deleted element');
+        //console.log('ran requestAnimationFrame to prevent screen sleep');
+    });
 }
 
-//takes a breathingAction object and uses its data to set the
-function setCustomValue(breathingAction){
-
-}
     
 ////////////////////////////////
 //       EVENT LISTENERS      //
