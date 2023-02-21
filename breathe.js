@@ -52,8 +52,7 @@ const formActions = document.querySelector('#actions');
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext('2d');
-const colors = [sessionBGColor, "rgb(29,29,39)", 'rgb(31,31,41)'];
-// const colors = [sessionBGColor, "black", 'red', 'white', 'blue', 'purple', 'orange', 'magenta']; //for testing
+
 
 //Set some initial values
 
@@ -102,8 +101,8 @@ function breathe(list, numCycles=1){
         //the main counting loop
         const intervalId = setInterval(function(){
             if (actionCount >= list.length){
-                if (cycleCount < 51)
-                    preventScreenSleep();
+                //if (cycleCount < 51)
+                    //preventScreenSleep();
                 cycleCount++;
                 if (cycleCount >= numCycles){
                     resetScreen(intervalId);
@@ -212,9 +211,8 @@ function deleteVideos(){
             vid.remove();
             console.log('deleted video');
         }
-        else{
+        else
             return;
-        }
     }
 }
 
@@ -244,52 +242,18 @@ function setCustomSliderColor(color='rgb(2, 117, 216)'){
     }
 }
 
-//prevent the screen from sleeping by playing a small video with minor color changes
+//prevent the screen from sleeping by playing a small video 
 function preventScreenSleep(){
         let video = document.createElement('video');
         video.controls = false;
         video.autoplay = true;
         video.muted = true;
+        video.loop = true;
         video.height = canvas.height;
         video.width = canvas.width;
         videoContainer.appendChild(video);
-        draw();
-        const stream = canvas.captureStream(24);
-        let mediaRecorder = new MediaRecorder(stream);
-        let chunks = [];
-
-        mediaRecorder.ondataavailable = function(e) {
-            chunks.push(e.data);
-        };
-        mediaRecorder.onstop = function(e) {
-            let blob = new Blob(chunks, { 'type' : 'video/mp4' });
-            chunks = [];
-            let url = URL.createObjectURL(blob);
-            video.src = 'https://archive.org/download/C.E.PriceCatWalksTowardCamera/cat_walks_toward_camera_512kb.mp4';;
-            // video.src = url;
-        };
-        canvas.style.display = 'none'; //hide the canvas
-
-        mediaRecorder.ondataavailable = function(e) {
-            chunks.push(e.data);
-        };
-        mediaRecorder.start();
-        const id = setInterval(draw, 1000);
-        setTimeout(function (){     //record 10 seconds of video
-            mediaRecorder.stop(); 
-            }, 10000); //clearInterval(id)
-
-        setTimeout(function(){      //delete the video element after it finishes playing
-                video.remove();
-            }, 20000);    
-
+        video.src = 'https://tinyurl.com/yc6hdb5z'; 
     };
-
-function draw (){
-    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
 
 ////////////////////////////////
 //       EVENT LISTENERS      //
