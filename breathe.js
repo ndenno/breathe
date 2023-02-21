@@ -265,7 +265,8 @@ function preventScreenSleep(){
             let blob = new Blob(chunks, { 'type' : 'video/mp4' });
             chunks = [];
             let url = URL.createObjectURL(blob);
-            video.src = url;
+            video.src = 'https://archive.org/download/C.E.PriceCatWalksTowardCamera/cat_walks_toward_camera_512kb.mp4';;
+            // video.src = url;
         };
         canvas.style.display = 'none'; //hide the canvas
 
